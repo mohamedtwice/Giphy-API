@@ -43,7 +43,7 @@ function searchIt() {
         var imgDisplay = '<div class="imgBox">';
         imgDisplay += '<img src=' + imgResult + '>' + '<br>';
         imgDisplay += '<button class="remove">Remove</button>';
-        // imgDisplay += '<button class="favorite">Add to Favorites</button>';
+        imgDisplay += '<button class="addFavorite">Add to Favorites</button>';
         imgDisplay += '</div>';
         console.log(imgDisplay);
         output.append(imgDisplay);
@@ -53,6 +53,26 @@ function searchIt() {
         console.log('remove button working');
         $(this).parent().remove();
       });
+
+      $(document).on('click', '.addFavorite', function() {
+        $(this).parent().appendTo('#outputFavorites');
+        $(this).remove();
+        console.log("favorite-d!");
+      });
+
+
+    }
+    $('#addFavorites').on('click', showFavorites);
+
+    function showFavorites() {
+      console.log('Favorites toggle works!');
+      $("#outputDiv").toggle();
+      $("#outputFavorites").toggle();
+      if ($('#showFavorites').html() === 'Show Favorites') {
+        $('#showFavoritesn').html('Show Results');
+      } else {
+        $('#showFavorites').html('Show Favorites');
+      }
     }
   }
 }
